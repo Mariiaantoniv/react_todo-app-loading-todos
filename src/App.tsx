@@ -8,7 +8,7 @@ import { Filter } from './types/Filter';
 import { ErrorNotification } from './components/ErrorNotification';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { TodoItem } from './components/TodoItem';
+import { TodoList } from './components/TodoList';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -52,7 +52,9 @@ export const App: React.FC = () => {
       <div className="todoapp__content">
         <Header todos={todos} />
 
-        {!loading && visibleTodos.length > 0 && <TodoItem todos={todos} />}
+        {!loading && visibleTodos.length > 0 && (
+          <TodoList todos={todos} filter={filter} />
+        )}
 
         {!loading && todos.length > 0 && (
           <Footer todos={todos} status={filter} onChangeStatus={setFilter} />
